@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const middlewares = require('./middlewares');
 const api = require('./api');
+const auth = require('./api/routes/auth');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1', api);
+app.use('/user', auth);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
